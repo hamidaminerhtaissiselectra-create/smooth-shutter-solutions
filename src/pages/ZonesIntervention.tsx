@@ -21,7 +21,11 @@ import {
   Settings,
   Zap,
   Truck,
-  CheckCircle
+  CheckCircle,
+  Smartphone,
+  Gauge,
+  Lightbulb,
+  HelpCircle
 } from "lucide-react";
 import { usePhoneCall } from "@/hooks/usePhoneCall";
 import { motion } from "framer-motion";
@@ -60,28 +64,6 @@ const ZonesIntervention = () => {
 
   const breadcrumbItems = [
     { name: "Zones d'intervention", url: "/zones-intervention" },
-  ];
-
-  // Services adaptés
-  const servicesPrincipaux = [
-    {
-      icon: Wrench,
-      title: "Réparation & Dépannage",
-      description: "Intervention rapide sur volets bloqués, lames cassées ou moteurs en panne. Diagnostic gratuit et réparation immédiate.",
-      link: "/services/reparation-volets-roulants"
-    },
-    {
-      icon: Settings,
-      title: "Installation & Remplacement",
-      description: "Pose de volets roulants neufs en aluminium ou PVC. Solutions sur-mesure adaptées à votre habitat.",
-      link: "/services/installation-remplacement-volets"
-    },
-    {
-      icon: Zap,
-      title: "Motorisation & Domotique",
-      description: "Modernisez vos volets manuels avec nos solutions de motorisation filaire ou radio (Somfy, Bubendorff).",
-      link: "/services/motorisation-domotique"
-    }
   ];
 
   // Stats adaptées
@@ -137,7 +119,7 @@ const ZonesIntervention = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      {/* Hero Section - Style similaire à la page d'accueil */}
+      {/* Hero Section - Style identique à la page d'accueil */}
       <section className="relative min-h-[600px] flex items-center overflow-hidden pt-20">
         <motion.div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
         
@@ -151,8 +133,8 @@ const ZonesIntervention = () => {
               transition={{ duration: 1, ease: "easeOut" }}
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-semibold border border-accent/20 mb-8 backdrop-blur-sm">
-                <MapPin className="h-4 w-4" />
-                Couverture Nationale — Paris & Île-de-France en Priorité
+                <Shield className="h-4 w-4" />
+                Expert en Volets Roulants depuis 10 ans — Partout en France
               </span>
             </motion.div>
             
@@ -160,7 +142,7 @@ const ZonesIntervention = () => {
               initial={{ opacity: 0, y: 30 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8 text-foreground"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-foreground"
             >
               Nos Zones d'Intervention : <span className="text-accent">Réparation & Installation</span> partout en France
             </motion.h1>
@@ -171,7 +153,7 @@ const ZonesIntervention = () => {
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
             >
-              Basés à Fontenay-Trésigny, nous intervenons sur l'ensemble du territoire français pour garantir le bon fonctionnement de vos volets roulants. Intervention express en Île-de-France et dans les grandes métropoles.
+              Basés à Fontenay-Trésigny, nous intervenons sur l'ensemble du territoire français pour garantir le bon fonctionnement de vos volets roulants. Intervention express en Île-de-France et dans les grandes métropoles. Nos techniciens utilisent la géolocalisation intelligente pour optimiser les délais d'intervention et vous proposer le meilleur service.
             </motion.p>
             
             <motion.div 
@@ -227,7 +209,7 @@ const ZonesIntervention = () => {
                 className="flex items-center gap-3 px-5 py-3 rounded-xl border text-sm font-bold backdrop-blur-sm"
               >
                 <Badge variant="serviceEmerald">
-                  <Award className="h-5 w-5" />
+                  <Award className="h-5 w-4" />
                   <span>Artisan certifié RGE</span>
                 </Badge>
               </motion.div>
@@ -269,10 +251,15 @@ const ZonesIntervention = () => {
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
               </div>
               <div>
-                <Badge variant="serviceOrange" className="mb-4">Secteur Prioritaire</Badge>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Réparation de Volets à Paris</h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Répar'Action Volets est votre expert de proximité dans tous les arrondissements de Paris. Nous intervenons en urgence pour tout dépannage de volet roulant bloqué ou moteur en panne.
+                <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-service-orange/10 text-service-orange border border-service-orange/20">
+                  <Zap className="h-3.5 w-3.5" /> Secteur Prioritaire
+                </Badge>
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">Réparation de Volets à Paris</h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  Répar'Action Volets est votre expert de proximité dans tous les arrondissements de Paris. Nous intervenons en urgence pour tout dépannage de volet roulant bloqué ou moteur en panne. Grâce à notre système de géolocalisation intelligente et notre réseau de techniciens répartis stratégiquement, nous garantissons une intervention rapide et efficace, même en heures creuses.
+                </p>
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  Nos équipes maîtrisent toutes les marques du marché et disposent des pièces de rechange en stock pour une réparation immédiate. Intervention sous 24h à 48h garantie, avec diagnostic gratuit et garantie 3 ans sur nos interventions.
                 </p>
                 <div className="flex items-center gap-6 mb-8">
                   <div className="flex flex-col">
@@ -306,10 +293,15 @@ const ZonesIntervention = () => {
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
               </div>
               <div className="md:order-1">
-                <Badge variant="serviceBlue" className="mb-4">Couverture Régionale</Badge>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Intervention en Île-de-France</h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Nous couvrons l'intégralité de la région parisienne. Nos techniciens circulent quotidiennement dans les départements 77, 78, 91, 92, 93, 94 et 95 pour assurer vos réparations.
+                <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-service-blue/10 text-service-blue border border-service-blue/20">
+                  <MapPin className="h-3.5 w-3.5" /> Couverture Régionale
+                </Badge>
+                <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">Intervention en Île-de-France</h2>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                  Nous couvrons l'intégralité de la région parisienne avec une présence locale dans tous les départements. Nos techniciens circulent quotidiennement dans les départements 77, 78, 91, 92, 93, 94 et 95 pour assurer vos réparations et installations. Grâce à notre optimisation géographique basée sur l'IA, nous réduisons les temps de trajet et proposons des interventions plus rapides et économiques.
+                </p>
+                <p className="text-muted-foreground mb-8 leading-relaxed">
+                  Que vous soyez à Versailles, Créteil, Cergy ou Melun, nous disposons de ressources locales pour intervenir rapidement. Nos équipes connaissent parfaitement chaque commune et peuvent vous proposer des solutions adaptées à votre environnement spécifique.
                 </p>
                 <div className="flex items-center gap-6 mb-8">
                   <div className="flex flex-col">
@@ -334,28 +326,74 @@ const ZonesIntervention = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Section Innovation & Technologie */}
       <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Nos Services Disponibles Partout</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Bénéficiez de la même qualité d'expertise Répar'Action Volets, où que vous soyez en France.</p>
-          </div>
-          
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center max-w-2xl mx-auto mb-14"
+          >
+            <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-service-violet/10 text-service-violet border border-service-violet/20">
+              <Lightbulb className="h-3.5 w-3.5" /> Innovation & Technologie
+            </Badge>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
+              Une Couverture Nationale Optimisée par l'IA et la Géolocalisation
+            </h2>
+            <p className="text-muted-foreground">
+              Répar'Action Volets utilise des technologies avancées pour vous proposer le meilleur service, où que vous soyez en France.
+            </p>
+          </motion.div>
+
           <div className="grid md:grid-cols-3 gap-8">
-            {servicesPrincipaux.map((service, index) => (
-              <AnimatedSection key={index} animation="fade-up" delay={index * 100}>
-                <Card className="border-border hover:border-accent/50 transition-colors h-full">
-                  <CardContent className="pt-6">
-                    <service.icon className="w-12 h-12 text-accent mb-4" />
-                    <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                    <p className="text-muted-foreground mb-6">{service.description}</p>
-                    <Button variant="outline" size="sm" asChild className="w-full">
-                      <Link to={service.link}>En savoir plus <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              </AnimatedSection>
+            {[
+              {
+                icon: Smartphone,
+                title: "Géolocalisation Intelligente",
+                desc: "Notre système d'IA analyse votre position et celle de nos techniciens pour optimiser les trajets et réduire les délais d'intervention.",
+                badge: "GEO",
+                iconBg: "bg-service-cyan",
+              },
+              {
+                icon: Gauge,
+                title: "Optimisation des Tournées",
+                desc: "Algorithmes d'optimisation qui regroupent les interventions par zone géographique pour une meilleure efficacité et des coûts réduits.",
+                badge: "IA",
+                iconBg: "bg-service-emerald",
+              },
+              {
+                icon: Lightbulb,
+                title: "Prédiction & Prévention",
+                desc: "Nos données historiques permettent d'identifier les pannes récurrentes et de proposer des solutions préventives à nos clients.",
+                badge: "Data",
+                iconBg: "bg-service-orange",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+                whileHover={{ y: -8, transition: { duration: 0.4 } }}
+                className="group bg-card rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover transition-all duration-500 border border-border relative p-8"
+              >
+                <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <item.icon className="h-6 w-6 text-white" strokeWidth={2} />
+                </div>
+                
+                <h3 className="font-display font-bold text-xl text-foreground mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  {item.desc}
+                </p>
+                <Badge variant="default" className="text-[11px] font-bold bg-accent/10 text-accent border border-accent/20">
+                  {item.badge}
+                </Badge>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -364,15 +402,28 @@ const ZonesIntervention = () => {
       {/* Autres Régions - Grille Simple */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Autres Régions de France</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Nous intervenons également dans les grandes métropoles nationales.</p>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }} 
+            whileInView={{ opacity: 1, y: 0 }} 
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-center max-w-2xl mx-auto mb-14"
+          >
+            <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-accent/10 text-accent border border-accent/20">
+              <MapPin className="h-3.5 w-3.5" /> Couverture Nationale
+            </Badge>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
+              Nos Régions d'Intervention en France
+            </h2>
+            <p className="text-muted-foreground">
+              Nous intervenons également dans les grandes métropoles nationales avec le même niveau d'expertise et de service.
+            </p>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {regionsData.slice(2).map((region, index) => (
               <AnimatedSection key={region.slug} animation="fade-up" delay={index * 50}>
-                <Card className="overflow-hidden group hover:shadow-lg transition-all border-border">
+                <Card className="overflow-hidden group hover:shadow-lg transition-all border-border h-full">
                   <div className="aspect-video relative overflow-hidden">
                     <img 
                       src={regionImages[region.slug] || ileDeFranceImg} 
@@ -380,14 +431,14 @@ const ZonesIntervention = () => {
                       className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                      <h3 className="text-white text-2xl font-bold">{region.name}</h3>
+                      <h3 className="text-white text-2xl font-bold text-center px-4">{region.name}</h3>
                     </div>
                   </div>
                   <CardContent className="p-6">
                     <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{region.description}</p>
-                    <span className="text-xs font-medium text-accent bg-accent/10 px-2 py-1 rounded-full">
+                    <Badge variant="default" className="text-[11px] font-bold bg-accent/10 text-accent border border-accent/20">
                       {region.departments.length} départements
-                    </span>
+                    </Badge>
                   </CardContent>
                 </Card>
               </AnimatedSection>
@@ -400,10 +451,19 @@ const ZonesIntervention = () => {
       <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Questions Fréquentes</h2>
-              <p className="text-muted-foreground">Tout ce qu'il faut savoir sur nos zones d'intervention et nos services.</p>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-12"
+            >
+              <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-accent/10 text-accent border border-accent/20">
+                <HelpCircle className="h-3.5 w-3.5" /> Questions Fréquentes
+              </Badge>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Vos Questions sur Nos Zones d'Intervention</h2>
+              <p className="text-muted-foreground">Tout ce qu'il faut savoir sur nos services et notre couverture géographique.</p>
+            </motion.div>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
@@ -426,7 +486,7 @@ const ZonesIntervention = () => {
         <div className="container mx-auto px-4 text-center">
           <Truck className="w-16 h-16 mx-auto mb-6 opacity-80" />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Un problème de volet roulant ?</h2>
-          <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">Nos techniciens interviennent rapidement chez vous, partout en France. Devis gratuit et intervention garantie.</p>
+          <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">Nos techniciens interviennent rapidement chez vous, partout en France. Devis gratuit et intervention garantie avec notre système de géolocalisation optimisé.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="text-lg px-10" asChild>
               <Link to="#devis">Demander mon devis gratuit</Link>
