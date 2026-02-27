@@ -227,7 +227,7 @@ const RegionPage = () => {
             <Button size="lg" variant="secondary" className="text-lg px-10" asChild>
               <Link to="/#devis">Demander un devis gratuit</Link>
             </Button>
-            <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 text-lg px-10" asChild>
+            <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-10" asChild>
               <a href={`tel:${phoneNumber.replace(/\s/g, '')}`}>Appeler le {phoneNumber}</a>
             </Button>
           </div>

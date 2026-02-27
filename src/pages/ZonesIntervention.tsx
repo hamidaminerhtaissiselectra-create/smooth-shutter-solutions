@@ -492,7 +492,7 @@ const ZonesIntervention = () => {
             <Button size="lg" variant="secondary" className="text-lg px-10" asChild>
               <Link to="#devis">Demander mon devis gratuit</Link>
             </Button>
-            <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white/10 text-lg px-10" asChild>
+            <Button size="lg" variant="outline" className="bg-transparent border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10 text-lg px-10" asChild>
               <a href="tel:0603205967">Appeler le 06 03 20 59 67</a>
             </Button>
           </div>
