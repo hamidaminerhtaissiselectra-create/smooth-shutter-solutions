@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import RegionPage from "./pages/regions/RegionPage";
 import ReparationVolets from "./pages/services/ReparationVolets";
 import InstallationRemplacement from "./pages/services/InstallationRemplacement";
 import Vitrerie from "./pages/services/Vitrerie";
@@ -91,6 +92,7 @@ const App = () => (
           <Route path="/services/motorisation-domotique" element={<MotorisationDomotique />} />
           <Route path="/services/depannage-express" element={<DepannageExpress />} />
           <Route path="/zones-intervention" element={<ZonesIntervention />} />
+          <Route path="/zones-intervention/:regionSlug" element={<RegionPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/qui-sommes-nous" element={<AboutUs />} />
