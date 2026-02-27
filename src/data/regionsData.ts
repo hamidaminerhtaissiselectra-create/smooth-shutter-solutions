@@ -18,12 +18,26 @@ export interface DepartmentData {
 
 export const regionsData: RegionData[] = [
   {
+    name: "Paris",
+    slug: "paris",
+    description: "Répar'Action Volets est votre expert en réparation, installation et motorisation de volets roulants à Paris. Intervention rapide dans tous les arrondissements pour un service de qualité.",
+    seoDescription: "Réparation volets roulants Paris, installation volets Paris, motorisation volets Paris. Intervention rapide dans tous les arrondissements de Paris. Devis gratuit.",
+    departments: [
+      { name: "Paris", code: "75" }
+    ],
+    mainCities: [
+      "Paris 1er", "Paris 2e", "Paris 3e", "Paris 4e", "Paris 5e", "Paris 6e", "Paris 7e", "Paris 8e", "Paris 9e", "Paris 10e",
+      "Paris 11e", "Paris 12e", "Paris 13e", "Paris 14e", "Paris 15e", "Paris 16e", "Paris 17e", "Paris 18e", "Paris 19e", "Paris 20e"
+    ],
+    economicHighlights: ["Centre économique et touristique mondial", "Sièges sociaux d'entreprises", "Commerces de luxe", "Patrimoine historique"],
+    clientTypes: ["Particuliers", "Entreprises", "Commerces", "Syndics de copropriété", "Hôtels"]
+  },
+  {
     name: "Île-de-France",
     slug: "ile-de-france",
-    description: "Région capitale de la France, l'Île-de-France concentre le plus grand bassin économique européen. HD Connect y assure une couverture complète pour tous vos besoins en sécurité électronique.",
-    seoDescription: "Top 3 Référencement Sécurité 2025-2026 en Île-de-France. HD Connect installe des systèmes de vidéosurveillance IA 4K, alarmes NF&A2P et contrôle d'accès biométrique. Intervention Rapide Urgence sur Paris et toute la région. Audit gratuit.",
+    description: "Répar'Action Volets intervient dans toute l'Île-de-France pour la réparation, l'installation et la motorisation de vos volets roulants. Service rapide et efficace dans les départements 77, 78, 91, 92, 93, 94, 95.",
+    seoDescription: "Réparation volets roulants Île-de-France, installation volets IdF, motorisation volets 77, 78, 91, 92, 93, 94, 95. Intervention rapide et devis gratuit.",
     departments: [
-      { name: "Paris", code: "75" },
       { name: "Seine-et-Marne", code: "77" },
       { name: "Yvelines", code: "78" },
       { name: "Essonne", code: "91" },
@@ -32,9 +46,9 @@ export const regionsData: RegionData[] = [
       { name: "Val-de-Marne", code: "94" },
       { name: "Val-d'Oise", code: "95" }
     ],
-    mainCities: ["Paris", "Créteil", "Vitry-sur-Seine", "Saint-Maur-des-Fossés", "Boulogne-Billancourt", "Versailles", "Saint-Denis", "Nanterre"],
-    economicHighlights: ["Quartier d'affaires La Défense", "Aéroports internationaux CDG et Orly", "Pôles technologiques Paris-Saclay", "Zones commerciales majeures"],
-    clientTypes: ["Sièges sociaux", "Commerces de centre-ville", "Résidences haut de gamme", "PME/TPE", "Institutions publiques"]
+    mainCities: ["Créteil", "Vitry-sur-Seine", "Saint-Maur-des-Fossés", "Boulogne-Billancourt", "Versailles", "Saint-Denis", "Nanterre", "Argenteuil", "Montreuil", "Aubervilliers", "Cergy", "Évry", "Melun", "Mantes-la-Jolie", "Rambouillet"],
+    economicHighlights: ["Pôles d'activités économiques majeurs", "Zones résidentielles denses", "Infrastructures de transport développées"],
+    clientTypes: ["Particuliers", "Entreprises", "Commerces", "Administrations", "Syndics de copropriété"]
   },
   {
     name: "Auvergne-Rhône-Alpes",
