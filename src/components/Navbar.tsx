@@ -17,7 +17,6 @@ const navLinks = [
   { label: "Qui sommes-nous", href: "/qui-sommes-nous" },
   { label: "Blog", href: "/blog" },
   { label: "Zones d'intervention", href: "/zones-intervention" },
-  { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
