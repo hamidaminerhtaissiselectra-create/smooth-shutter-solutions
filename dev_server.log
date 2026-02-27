@@ -8,3 +8,5 @@
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://169.254.0.21:5173/
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+9:04:00 PM [vite] hmr update /src/components/Navbar.tsx, /src/index.css, /src/index.css?direct
+9:04:11 PM [vite] hmr update /src/components/ServicesSection.tsx, /src/index.css, /src/index.css?direct

@@ -11,17 +11,6 @@ import imgDepannage from "@/assets/service-depannage.jpg";
 
 const services = [
   {
-    icon: Zap,
-    title: "Dépannage Express",
-    desc: "Service de dépannage rapide pour volets bloqués ou moteurs en panne. Intervention le jour même.",
-    badge: "Express",
-    iconBg: "bg-service-orange",
-    iconShadow: "shadow-[0_4px_14px_hsl(25,90%,55%,0.35)]",
-    cardBorder: "hover:border-service-orange/40",
-    image: imgDepannage,
-    link: "/services/depannage-express",
-  },
-  {
     icon: LayoutGrid,
     title: "Installation Complète",
     desc: "Prise de mesures, fabrication sur-mesure et pose professionnelle. Accompagnement complet de A à Z.",
@@ -31,6 +20,17 @@ const services = [
     cardBorder: "hover:border-service-cyan/40",
     image: imgComplete,
     link: "/services/installation-remplacement-volets",
+  },
+  {
+    icon: Zap,
+    title: "Dépannage Express",
+    desc: "Service de dépannage rapide pour volets bloqués ou moteurs en panne. Intervention le jour même.",
+    badge: "Express",
+    iconBg: "bg-service-orange",
+    iconShadow: "shadow-[0_4px_14px_hsl(25,90%,55%,0.35)]",
+    cardBorder: "hover:border-service-orange/40",
+    image: imgDepannage,
+    link: "/services/depannage-express",
   },
   {
     icon: Wrench,
