@@ -17,18 +17,14 @@ import {
   Clock, 
   Award, 
   Users,
-  Wrench,
-  Settings,
   Zap,
-  Truck,
-  CheckCircle,
   Smartphone,
   Gauge,
   Lightbulb,
   HelpCircle
 } from "lucide-react";
-import { usePhoneCall } from "@/hooks/usePhoneCall";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -53,7 +49,10 @@ import centreValDeLoireImg from "@/assets/regions/centre-val-de-loire.webp";
 import corseImg from "@/assets/regions/corse.webp";
 
 const ZonesIntervention = () => {
-  const { phoneNumber, callUrl } = usePhoneCall();
+  
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
   useSEO({
     title: "Zones d'Intervention France | Réparation & Installation Volets Roulants | Répar'Action Volets",
@@ -120,9 +119,11 @@ const ZonesIntervention = () => {
       <Navbar />
 
       {/* Hero Section - Style identique à la page d'accueil */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden pt-20">
-        <motion.div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
-        
+      <section ref={heroRef} className="relative min-h-[600px] flex items-center overflow-hidden pt-20">
+        <motion.div className="absolute inset-0" style={{ y: bgY }}>
+          <img src={ileDeFranceImg} alt="Zones d'intervention volets roulants" className="w-full h-[120%] object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
+        </motion.div>
         <div className="container mx-auto px-4 relative z-10">
           <Breadcrumbs items={breadcrumbItems} />
           
@@ -484,7 +485,7 @@ const ZonesIntervention = () => {
       {/* CTA Section */}
       <section className="py-20 bg-accent text-accent-foreground">
         <div className="container mx-auto px-4 text-center">
-          <Truck className="w-16 h-16 mx-auto mb-6 opacity-80" />
+          <ArrowRight className="w-16 h-16 mx-auto mb-6 opacity-80" />
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Un problème de volet roulant ?</h2>
           <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">Nos techniciens interviennent rapidement chez vous, partout en France. Devis gratuit et intervention garantie avec notre système de géolocalisation optimisé.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

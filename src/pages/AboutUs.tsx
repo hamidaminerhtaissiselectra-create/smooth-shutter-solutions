@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Award, Users, CheckCircle2, ArrowRight, ChevronRight, Trophy, Zap, Target, Heart } from "lucide-react";
+import { Award, Users, CheckCircle2, ArrowRight, ChevronRight, Trophy, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navbar from "@/components/Navbar";
