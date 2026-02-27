@@ -5,8 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 
 
 const serviceLinks = [
-  { label: "Installation & Remplacement", href: "/services/installation-remplacement-volets" },
   { label: "Dépannage Express", href: "/services/depannage-express" },
+  { label: "Installation & Remplacement", href: "/services/installation-remplacement-volets" },
   { label: "Réparation de volets", href: "/services/reparation-volets-roulants" },
   { label: "Motorisation & Domotique", href: "/services/motorisation-domotique" },
   { label: "Vitrerie & Vitrage", href: "/services/vitrerie-remplacement-vitrage" },
