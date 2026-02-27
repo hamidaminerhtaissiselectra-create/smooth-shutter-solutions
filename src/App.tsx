@@ -22,6 +22,7 @@ import PolitiqueConfidentialite from "./pages/PolitiqueConfidentialite";
 import CGV from "./pages/CGV";
 import FloatingCallButton from "./components/FloatingCallButton";
 import CookieConsent from "./components/CookieConsent";
+import ScrollToHash from "./components/ScrollToHash";
 
 // Imports des pages localisées
 import ReparationVoletAubervilliers from "./pages/zones/ReparationVoletAubervilliers";
@@ -162,6 +163,7 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ScrollToHash />
         <FloatingCallButton />
         <CookieConsent />
       </BrowserRouter>
