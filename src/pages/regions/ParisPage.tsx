@@ -314,15 +314,35 @@ const ParisPage = () => {
                   <p className="text-sm text-muted-foreground mb-2">{group.subtitle}</p>
                   <p className="text-muted-foreground mb-6 leading-relaxed">{group.description}</p>
                   
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
-                    {group.arrondissements.map((arr) => (
-                      <Link 
-                        key={arr.slug} 
-                        to={`/zones-intervention/${arr.slug}`}
-                        className="px-3 py-2 bg-card border border-border rounded-lg text-sm font-medium text-center hover:border-accent hover:bg-accent/5 hover:text-accent transition-all"
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                    {group.arrondissements.map((arr, arrIdx) => (
+                      <motion.div
+                        key={arr.slug}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: arrIdx * 0.05 }}
+                        className="group/card"
                       >
-                        {arr.name}
-                      </Link>
+                        <Link to={`/zones-intervention/${arr.slug}`} className="block">
+                          <div className="relative h-28 w-full overflow-hidden rounded-t-xl">
+                            <div className={`h-full w-full flex items-center justify-center ${groupIndex === 0 ? 'bg-gradient-to-br from-service-blue/20 to-service-blue/5' : 'bg-gradient-to-br from-service-orange/20 to-service-orange/5'}`}>
+                              <MapPin className={`h-8 w-8 ${groupIndex === 0 ? 'text-service-blue/40' : 'text-service-orange/40'}`} />
+                            </div>
+                          </div>
+                          <div className={`p-4 rounded-b-xl border border-t-0 transition-all duration-300 card-shadow group-hover/card:card-shadow-hover ${groupIndex === 0 ? 'bg-service-blue/5 border-service-blue/20' : 'bg-service-orange/5 border-service-orange/20'}`}>
+                            <div className="flex items-center gap-2">
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shadow-sm ${groupIndex === 0 ? 'bg-service-blue text-white' : 'bg-service-orange text-white'}`}>
+                                <MapPin className="h-4 w-4" />
+                              </div>
+                              <span className="text-sm font-bold text-foreground">{arr.name}</span>
+                            </div>
+                            <div className="mt-2 flex items-center gap-1 text-xs font-semibold text-accent transition-all duration-300 group-hover/card:gap-2">
+                              Voir les détails <ArrowRight className="h-3 w-3" />
+                            </div>
+                          </div>
+                        </Link>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
