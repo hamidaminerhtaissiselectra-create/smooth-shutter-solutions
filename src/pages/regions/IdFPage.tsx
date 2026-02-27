@@ -359,16 +359,46 @@ const IdFPage = () => {
                   <h3 className="font-display text-2xl md:text-3xl font-bold mb-2">{dept.name}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">{dept.description}</p>
                   
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {dept.villes.map((ville) => (
-                      <Link 
-                        key={ville.slug} 
-                        to={`/zones-intervention/${ville.slug}`}
-                        className="px-3 py-2 bg-card border border-border rounded-lg text-sm font-medium hover:border-accent hover:bg-accent/5 hover:text-accent transition-all"
-                      >
-                        {ville.name}
-                      </Link>
-                    ))}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+                    {dept.villes.map((ville, villeIdx) => {
+                      const colorMap: Record<string, { bg: string; border: string; icon: string; iconBg: string }> = {
+                        serviceOrange: { bg: 'bg-service-orange/5', border: 'border-service-orange/20', icon: 'text-service-orange/40', iconBg: 'bg-service-orange text-white' },
+                        serviceBlue: { bg: 'bg-service-blue/5', border: 'border-service-blue/20', icon: 'text-service-blue/40', iconBg: 'bg-service-blue text-white' },
+                        serviceEmerald: { bg: 'bg-service-emerald/5', border: 'border-service-emerald/20', icon: 'text-service-emerald/40', iconBg: 'bg-service-emerald text-white' },
+                        serviceViolet: { bg: 'bg-service-violet/5', border: 'border-service-violet/20', icon: 'text-service-violet/40', iconBg: 'bg-service-violet text-white' },
+                        serviceCyan: { bg: 'bg-service-cyan/5', border: 'border-service-cyan/20', icon: 'text-service-cyan/40', iconBg: 'bg-service-cyan text-white' },
+                      };
+                      const colors = colorMap[dept.badgeVariant] || colorMap.serviceBlue;
+                      return (
+                        <motion.div
+                          key={ville.slug}
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: villeIdx * 0.05 }}
+                          className="group/card"
+                        >
+                          <Link to={`/zones-intervention/${ville.slug}`} className="block">
+                            <div className="relative h-28 w-full overflow-hidden rounded-t-xl">
+                              <div className={`h-full w-full flex items-center justify-center bg-gradient-to-br from-current/20 to-current/5 ${colors.bg}`}>
+                                <MapPin className={`h-8 w-8 ${colors.icon}`} />
+                              </div>
+                            </div>
+                            <div className={`p-4 rounded-b-xl border border-t-0 transition-all duration-300 card-shadow group-hover/card:card-shadow-hover ${colors.bg} ${colors.border}`}>
+                              <div className="flex items-center gap-2">
+                                <div className={`w-8 h-8 rounded-lg flex items-center justify-center shadow-sm ${colors.iconBg}`}>
+                                  <MapPin className="h-4 w-4" />
+                                </div>
+                                <span className="text-sm font-bold text-foreground">{ville.name}</span>
+                              </div>
+                              <div className="mt-2 flex items-center gap-1 text-xs font-semibold text-accent transition-all duration-300 group-hover/card:gap-2">
+                                Voir les détails <ArrowRight className="h-3 w-3" />
+                              </div>
+                            </div>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                   </div>
 
                   <div className="flex items-center gap-6">
