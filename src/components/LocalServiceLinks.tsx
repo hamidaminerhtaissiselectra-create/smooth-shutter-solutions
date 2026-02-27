@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { services } from "@/data/seoData";
 import { ArrowRight, MapPin, Building2, Camera, ShieldAlert, Lock, Home, Wifi, Wrench, Radio, DoorOpen, Package, Settings, Truck } from "lucide-react";
 
 interface LocalServiceLinksProps {
@@ -11,7 +10,7 @@ interface LocalServiceLinksProps {
 
 // Composant de maillage interne pour pages locales
 // Architecture SEO : liens vers tous les services pertinents + page nationale
-const LocalServiceLinks = ({ cityName, regionName, regionSlug, currentService }: LocalServiceLinksProps) => {
+const LocalServiceLinks = ({ cityName, regionName, regionSlug }: LocalServiceLinksProps) => {
   const location = cityName || regionName || "";
 
   // Services principaux avec icônes

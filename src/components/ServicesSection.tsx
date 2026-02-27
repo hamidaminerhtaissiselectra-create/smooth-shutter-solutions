@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { Wrench, RefreshCcw, GlassWater, Cpu, LayoutGrid, Zap, ArrowRight, Shield } from "lucide-react";
+import { Wrench, GlassWater, Cpu, LayoutGrid, Zap, ArrowRight, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import imgReparation from "@/assets/service-reparation.jpg";
-import imgInstallation from "@/assets/service-installation.jpg";
 import imgVitrerie from "@/assets/service-vitrerie.jpg";
 import imgMotorisation from "@/assets/service-motorisation.jpg";
 import imgComplete from "@/assets/service-installation-complete.jpg";

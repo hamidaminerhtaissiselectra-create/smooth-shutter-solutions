@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
-import AnimatedSection from "@/components/AnimatedSection";
+import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +17,7 @@ import {
   Settings,
   Zap
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -27,6 +27,9 @@ import {
 import ileDeFranceImg from "@/assets/regions/ile-de-france.webp";
 
 const ParisPage = () => {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
   useSEO({
     title: "Réparation Volets Roulants Paris | Tous les Arrondissements | Répar'Action Volets",
     description: "Expert en réparation de volets roulants à Paris. Intervention rapide dans les 20 arrondissements. Dépannage express, installation et motorisation. Devis gratuit.",
@@ -104,8 +107,11 @@ const ParisPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[500px] flex items-center overflow-hidden pt-20">
-        <motion.div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
+      <section ref={heroRef} className="relative min-h-[500px] flex items-center overflow-hidden pt-20">
+        <motion.div className="absolute inset-0" style={{ y: bgY }}>
+          <img src={ileDeFranceImg} alt="Volets roulants Paris" className="w-full h-[120%] object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
+        </motion.div>
         <div className="container mx-auto px-4 relative z-10">
           <Breadcrumbs items={breadcrumbItems} />
           <div className="max-w-3xl mt-8">

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, RefObject } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 interface ParallaxOptions {
   speed?: number;
@@ -13,7 +13,6 @@ export const useParallax = (options: ParallaxOptions = {}) => {
   useEffect(() => {
     const handleScroll = () => {
       if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
       const scrolled = window.scrollY;
       const rate = scrolled * speed;
       setOffset(direction === 'up' ? -rate : rate);

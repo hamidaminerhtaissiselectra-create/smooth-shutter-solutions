@@ -6,23 +6,12 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import FAQAccordion from "@/components/FAQAccordion";
-import LocalServiceLinks from "@/components/LocalServiceLinks";
-import MiniTestimonials from "@/components/MiniTestimonials";
-import WhyHDConnect from "@/components/WhyHDConnect";
 import RegionHeroParallax from "@/components/region/RegionHeroParallax";
-import { getRegionBySlug, regionsData } from "@/data/regionsData";
+import { getRegionBySlug } from "@/data/regionsData";
 import { getCitiesByRegion } from "@/data/citiesData";
 import { motion } from "framer-motion";
 import {
-  MapPin,
   ArrowRight,
-  Building2,
-  Shield,
-  Phone,
-  CheckCircle,
-  Clock,
-  Award,
-  Users,
   Wrench,
   Settings,
   Zap,
@@ -31,13 +20,11 @@ import {
   Truck,
 } from "lucide-react";
 import { usePhoneCall } from "@/hooks/usePhoneCall";
-import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
 
 const RegionPage = () => {
   const { regionSlug } = useParams<{ regionSlug: string }>();
-  const { phoneNumber, callUrl } = usePhoneCall();
-  const { scrollToSection } = useSmoothScroll();
+  const { phoneNumber } = usePhoneCall();
 
 
   if (!regionSlug) {
@@ -51,7 +38,7 @@ const RegionPage = () => {
   }
 
   // Récupérer les villes de la région qui ont une page dédiée
-  const regionCities = getCitiesByRegion(region.name);
+  getCitiesByRegion(region.name);
 
   useSEO({
     title: `Réparation Volets Roulants ${region.name} | Installation & Dépannage | Répar'Action Volets`,

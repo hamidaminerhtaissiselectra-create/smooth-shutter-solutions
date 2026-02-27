@@ -1,4 +1,4 @@
-import { Star, Quote, MapPin, Building2, CheckCircle } from "lucide-react";
+import { Star, Quote, MapPin, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import AnimatedSection from "@/components/AnimatedSection";
 import { Link } from "react-router-dom";
