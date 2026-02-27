@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useSEO } from "@/hooks/useSEO";
 import Breadcrumbs from "@/components/SEO/Breadcrumbs";
+import AnimatedSection from "@/components/AnimatedSection";
 import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,14 @@ import {
   Award,
   Wrench,
   Settings,
-  Zap
+  Zap,
+  Building2,
+  Users,
+  Shield,
+  HelpCircle,
+  Home,
+  ShieldCheck,
+  Truck
 } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
@@ -25,11 +33,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import ileDeFranceImg from "@/assets/regions/ile-de-france.webp";
+import { usePhoneCall } from "@/hooks/usePhoneCall";
 
 const ParisPage = () => {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+  const { phoneNumber } = usePhoneCall();
+
   useSEO({
     title: "Réparation Volets Roulants Paris | Tous les Arrondissements | Répar'Action Volets",
     description: "Expert en réparation de volets roulants à Paris. Intervention rapide dans les 20 arrondissements. Dépannage express, installation et motorisation. Devis gratuit.",
@@ -42,44 +53,92 @@ const ParisPage = () => {
     { name: "Paris", url: "/zones-intervention/paris" },
   ];
 
-  const arrondissements = [
-    { name: "Paris 1er", slug: "reparation-volet-paris-1" },
-    { name: "Paris 2e", slug: "reparation-volet-paris-2" },
-    { name: "Paris 3e", slug: "reparation-volet-paris-3" },
-    { name: "Paris 4e", slug: "reparation-volet-paris-4" },
-    { name: "Paris 5e", slug: "reparation-volet-paris-5" },
-    { name: "Paris 6e", slug: "reparation-volet-paris-6" },
-    { name: "Paris 7e", slug: "reparation-volet-paris-7" },
-    { name: "Paris 8e", slug: "reparation-volet-paris-8" },
-    { name: "Paris 9e", slug: "reparation-volet-paris-9" },
-    { name: "Paris 10e", slug: "reparation-volet-paris-10" },
-    { name: "Paris 11e", slug: "reparation-volet-paris-11" },
-    { name: "Paris 12e", slug: "reparation-volet-paris-12" },
-    { name: "Paris 13e", slug: "reparation-volet-paris-13" },
-    { name: "Paris 14e", slug: "reparation-volet-paris-14" },
-    { name: "Paris 15e", slug: "reparation-volet-paris-15" },
-    { name: "Paris 16e", slug: "reparation-volet-paris-16" },
-    { name: "Paris 17e", slug: "reparation-volet-paris-17" },
-    { name: "Paris 18e", slug: "reparation-volet-paris-18" },
-    { name: "Paris 19e", slug: "reparation-volet-paris-19" },
-    { name: "Paris 20e", slug: "reparation-volet-paris-20" },
+  const stats = [
+    { icon: Building2, value: "20", label: "Arrondissements" },
+    { icon: Clock, value: "24-48h", label: "Délai d'intervention" },
+    { icon: Users, value: "2000+", label: "Clients parisiens" },
+    { icon: Award, value: "4.9/5", label: "Note moyenne" }
+  ];
+
+  const arrondissementsGroups = [
+    {
+      title: "Rive Droite — Centre & Nord",
+      subtitle: "Du 1er au 4e, 9e au 12e, 17e au 20e arrondissement",
+      image: "/images/zones/paris-1.jpg",
+      badge: "Centre Historique",
+      badgeVariant: "serviceBlue" as const,
+      description: "Le cœur historique de Paris, du Marais au Louvre en passant par les Grands Boulevards. Nos techniciens interviennent sur les volets roulants des immeubles haussmanniens et modernes avec une expertise adaptée au patrimoine parisien.",
+      arrondissements: [
+        { name: "Paris 1er", slug: "reparation-volet-paris-1" },
+        { name: "Paris 2e", slug: "reparation-volet-paris-2" },
+        { name: "Paris 3e", slug: "reparation-volet-paris-3" },
+        { name: "Paris 4e", slug: "reparation-volet-paris-4" },
+        { name: "Paris 9e", slug: "reparation-volet-paris-9" },
+        { name: "Paris 10e", slug: "reparation-volet-paris-10" },
+        { name: "Paris 11e", slug: "reparation-volet-paris-11" },
+        { name: "Paris 12e", slug: "reparation-volet-paris-12" },
+        { name: "Paris 17e", slug: "reparation-volet-paris-17" },
+        { name: "Paris 18e", slug: "reparation-volet-paris-18" },
+        { name: "Paris 19e", slug: "reparation-volet-paris-19" },
+        { name: "Paris 20e", slug: "reparation-volet-paris-20" },
+      ]
+    },
+    {
+      title: "Rive Gauche & Ouest",
+      subtitle: "Du 5e au 8e, 13e au 16e arrondissement",
+      image: "/images/zones/paris-8.jpg",
+      badge: "Quartiers Résidentiels",
+      badgeVariant: "serviceOrange" as const,
+      description: "Les quartiers résidentiels et chics de la rive gauche, de Saint-Germain-des-Prés aux Champs-Élysées. Intervention sur volets roulants de standing, motorisation Somfy et domotique connectée pour les résidences de prestige.",
+      arrondissements: [
+        { name: "Paris 5e", slug: "reparation-volet-paris-5" },
+        { name: "Paris 6e", slug: "reparation-volet-paris-6" },
+        { name: "Paris 7e", slug: "reparation-volet-paris-7" },
+        { name: "Paris 8e", slug: "reparation-volet-paris-8" },
+        { name: "Paris 13e", slug: "reparation-volet-paris-13" },
+        { name: "Paris 14e", slug: "reparation-volet-paris-14" },
+        { name: "Paris 15e", slug: "reparation-volet-paris-15" },
+        { name: "Paris 16e", slug: "reparation-volet-paris-16" },
+      ]
+    }
   ];
 
   const services = [
     {
       icon: Wrench,
       title: "Réparation & Dépannage",
-      description: "Intervention rapide pour volets bloqués, lames cassées ou moteurs en panne."
+      description: "Intervention rapide sur volets bloqués ou cassés à Paris. Diagnostic gratuit et réparation immédiate.",
+      link: "/services/reparation-volets-roulants"
     },
     {
       icon: Settings,
       title: "Installation & Remplacement",
-      description: "Pose de volets roulants neufs en aluminium ou PVC sur-mesure."
+      description: "Pose de volets roulants neufs sur-mesure à Paris. Solutions aluminium ou PVC haute qualité.",
+      link: "/services/installation-remplacement-volets"
     },
     {
       icon: Zap,
-      title: "Motorisation & Domotique",
-      description: "Modernisez vos volets manuels avec solutions Somfy ou Bubendorff."
+      title: "Motorisation",
+      description: "Modernisez vos volets manuels à Paris. Installation de moteurs Somfy, Bubendorff et solutions connectées.",
+      link: "/services/motorisation-domotique"
+    },
+    {
+      icon: Home,
+      title: "Domotique",
+      description: "Centralisez le contrôle de vos volets à Paris. Pilotage à distance via smartphone et scénarios intelligents.",
+      link: "/services/motorisation-domotique"
+    },
+    {
+      icon: ShieldCheck,
+      title: "Sécurité Renforcée",
+      description: "Installation de verrous de sécurité et volets anti-effraction à Paris pour protéger votre habitat.",
+      link: "/services/installation-remplacement-volets"
+    },
+    {
+      icon: Truck,
+      title: "Dépannage Express",
+      description: "Service d'urgence disponible à Paris pour les pannes critiques. Intervention sous 24h garantie.",
+      link: "/services/depannage-express"
     }
   ];
 
@@ -107,7 +166,7 @@ const ParisPage = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[500px] flex items-center overflow-hidden pt-20">
+      <section ref={heroRef} className="relative min-h-[600px] flex items-center overflow-hidden pt-20">
         <motion.div className="absolute inset-0" style={{ y: bgY }}>
           <img src={ileDeFranceImg} alt="Volets roulants Paris" className="w-full h-[120%] object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/40" />
@@ -130,7 +189,7 @@ const ParisPage = () => {
               initial={{ opacity: 0, y: 30 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-8 text-foreground"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-8 text-foreground"
             >
               Réparation de Volets Roulants à <span className="text-accent">Paris</span>
             </motion.h1>
@@ -141,24 +200,24 @@ const ParisPage = () => {
               transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
               className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed"
             >
-              Répar'Action Volets est votre expert de proximité dans tous les arrondissements de Paris. Intervention rapide, diagnostic gratuit et garantie 3 ans.
+              Répar'Action Volets est votre expert de proximité dans tous les arrondissements de Paris. Intervention rapide, diagnostic gratuit et garantie 3 ans sur toutes nos prestations.
             </motion.p>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
               transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 mb-12"
             >
               <Button size="lg" variant="accent" asChild className="px-8 py-7 text-lg font-bold rounded-full shadow-xl transition-all duration-300 hover:scale-105">
-                <a href="tel:0603205967" className="flex items-center gap-2">
-                  <Phone className="h-5 w-5" /> 06 03 20 59 67
-                </a>
+                <Link to="/#devis" className="flex items-center gap-2">
+                  Demander un Devis Gratuit <ArrowRight className="h-5 w-5" />
+                </Link>
               </Button>
               <Button size="lg" variant="accent-outline" asChild className="px-8 py-7 text-lg font-bold rounded-full transition-all duration-300 hover:scale-105">
-                <Link to="/#devis" className="flex items-center gap-2">
-                  Demander un Devis <ArrowRight className="h-5 w-5" />
-                </Link>
+                <a href={`tel:${phoneNumber.replace(/\s/g, '')}`} className="flex items-center gap-2">
+                  <Phone className="h-5 w-5" /> {phoneNumber}
+                </a>
               </Button>
             </motion.div>
 
@@ -166,7 +225,7 @@ const ParisPage = () => {
               initial={{ opacity: 0 }} 
               animate={{ opacity: 1 }} 
               transition={{ duration: 1, delay: 0.8 }}
-              className="flex flex-wrap gap-4 mt-8"
+              className="flex flex-wrap gap-4"
             >
               <motion.div 
                 initial={{ opacity: 0, x: -20 }}
@@ -190,64 +249,148 @@ const ParisPage = () => {
                   <span>Certifié RGE</span>
                 </Badge>
               </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.0, duration: 0.8 }}
+                className="flex items-center gap-3 px-5 py-3 rounded-xl border text-sm font-bold backdrop-blur-sm"
+              >
+                <Badge variant="serviceEmerald">
+                  <Shield className="h-5 w-5" />
+                  <span>Garantie 3 ans</span>
+                </Badge>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-card border-y border-border">
+      {/* Stats Section */}
+      <section className="py-12 bg-card border-y border-border">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <service.icon className="w-12 h-12 text-accent mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent mb-4">
+                  <stat.icon className="w-6 h-6" />
+                </div>
+                <div className="text-3xl font-bold text-foreground">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Arrondissements Grid */}
+      {/* Arrondissements — Blocs Image + Texte */}
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Tous les Arrondissements de Paris</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Cliquez sur votre arrondissement pour accéder à la page dédiée et découvrir nos services spécifiques.</p>
-          </div>
+          <AnimatedSection animation="fade-up">
+            <div className="text-center mb-16">
+              <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-accent/10 text-accent border border-accent/20">
+                <MapPin className="h-3.5 w-3.5" /> 20 Arrondissements
+              </Badge>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">Tous les Arrondissements de Paris</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">Cliquez sur votre arrondissement pour accéder à la page dédiée et découvrir nos services spécifiques.</p>
+            </div>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
-            {arrondissements.map((arr, index) => (
-              <motion.div
-                key={arr.slug}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <Link to={`/zones-intervention/${arr.slug}`}>
-                  <Card className="h-full border-accent/20 hover:border-accent hover:bg-accent/5 transition-all cursor-pointer group">
-                    <CardContent className="p-6 flex items-center justify-center h-full text-center">
-                      <span className="font-bold text-foreground group-hover:text-accent transition-colors">{arr.name}</span>
-                    </CardContent>
-                  </Card>
-                </Link>
-              </motion.div>
+          {arrondissementsGroups.map((group, groupIndex) => (
+            <AnimatedSection key={groupIndex} animation="fade-up">
+              <div className={`grid md:grid-cols-2 gap-12 items-center ${groupIndex > 0 ? 'mt-24' : ''} ${groupIndex % 2 !== 0 ? '' : ''}`}>
+                <div className={`relative aspect-video rounded-2xl overflow-hidden shadow-2xl group ${groupIndex % 2 !== 0 ? 'md:order-2' : ''}`}>
+                  <img 
+                    src={group.image} 
+                    alt={group.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                </div>
+                <div className={groupIndex % 2 !== 0 ? 'md:order-1' : ''}>
+                  <Badge variant={group.badgeVariant} className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                    <Building2 className="h-3.5 w-3.5" /> {group.badge}
+                  </Badge>
+                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">{group.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-2">{group.subtitle}</p>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{group.description}</p>
+                  
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-6">
+                    {group.arrondissements.map((arr) => (
+                      <Link 
+                        key={arr.slug} 
+                        to={`/zones-intervention/${arr.slug}`}
+                        className="px-3 py-2 bg-card border border-border rounded-lg text-sm font-medium text-center hover:border-accent hover:bg-accent/5 hover:text-accent transition-all"
+                      >
+                        {arr.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-16 bg-secondary/30">
+        <div className="container mx-auto px-4">
+          <AnimatedSection animation="fade-up">
+            <div className="text-center mb-12">
+              <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-service-violet/10 text-service-violet border border-service-violet/20">
+                <Wrench className="h-3.5 w-3.5" /> Nos Services
+              </Badge>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mt-2 mb-4">
+                Nos Services de Volets Roulants à Paris
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Répar'Action Volets propose une gamme complète de solutions pour vos volets roulants dans tous les arrondissements de Paris.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <AnimatedSection key={index} animation="scale-in" delay={index * 100}>
+                <Card className="hover:shadow-md transition-shadow h-full border-border">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-foreground text-lg mb-2">{service.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">{service.description}</p>
+                    <Link 
+                      to={service.link}
+                      className="text-primary font-medium text-sm hover:underline inline-flex items-center gap-1"
+                    >
+                      En savoir plus
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </CardContent>
+                </Card>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-secondary/20">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Questions Fréquentes</h2>
-              <p className="text-muted-foreground">Tout ce qu'il faut savoir sur nos services à Paris.</p>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }} 
+              whileInView={{ opacity: 1, y: 0 }} 
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-12"
+            >
+              <Badge variant="default" className="gap-2 px-3 py-1 rounded-full text-sm font-semibold mb-4 bg-accent/10 text-accent border border-accent/20">
+                <HelpCircle className="h-3.5 w-3.5" /> Questions Fréquentes
+              </Badge>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Vos Questions sur Paris</h2>
+              <p className="text-muted-foreground">Tout ce qu'il faut savoir sur nos services dans les 20 arrondissements.</p>
+            </motion.div>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>
@@ -261,13 +404,18 @@ const ParisPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-accent text-accent-foreground">
+      <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Besoin d'une réparation à Paris ?</h2>
-          <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">Contactez-nous dès maintenant pour une intervention rapide et un devis gratuit.</p>
-          <Button size="lg" variant="secondary" className="text-lg px-10" asChild>
-            <a href="tel:0603205967">Appeler le 06 03 20 59 67</a>
-          </Button>
+          <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto">Contactez-nous dès maintenant pour une intervention rapide et un devis gratuit dans votre arrondissement.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" className="text-lg px-10" asChild>
+              <Link to="/#devis">Demander un devis gratuit</Link>
+            </Button>
+            <Button size="lg" variant="outline" className="bg-transparent border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-lg px-10" asChild>
+              <a href={`tel:${phoneNumber.replace(/\s/g, '')}`}>Appeler le {phoneNumber}</a>
+            </Button>
+          </div>
         </div>
       </section>
 
